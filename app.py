@@ -118,16 +118,21 @@ if st.session_state.get('prediccion_realizada', False):
         cluster = CLUSTERS[cluster_id]
     
     ocupacion = (cabinas_pred / MAX_CABINAS) * 100
-    
+
     col1, col2, col3, col4 = st.columns(4)
+
     with col1:
-        st.metric("Cabinas Ocupadas", f"≈ {cabinas_pred:.2f}")
+        st.metric("Cabinas Ocupadas", f"≈ {cabinas_pred:.0f}")
+
     with col2:
-        st.metric("Disponibles", f"≈ {MAX_CABINAS - cabinas_pred:.2f}")
+        st.metric("Disponibles", f"≈ {(MAX_CABINAS - cabinas_pred):.0f}")
+
     with col3:
-        st.metric("Ocupación", f"≈ {ocupacion:.1f}%")
+        st.metric("Ocupación", f"≈ {ocupacion:.0f} %")
+
     with col4:
-        st.metric("Ingreso estimado/hora", f" ≈ S/.{cabinas_pred * 5:,}")
+        ingreso_est = cabinas_pred * 5
+        st.metric("Ingreso estimado/hora", f"≈ S/. {ingreso_est:,.2f}")
 
     st.markdown(f"## {cluster['emoji']} {cluster['nombre']} a las {hora}:00")
     st.markdown(f"**{dia_nombre}** • {cluster['rango']}")
