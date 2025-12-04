@@ -1,0 +1,1 @@
+{"hora_min": 10, "hora_max": 20, "cabinas_min": 5, "cabinas_max": 25, "columnas_X": ["hora_inicio", "dia_semana", "es_fin_semana"], "fecha_maxima": "2025-10-31 00:00:00"}
